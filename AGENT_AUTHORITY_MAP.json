@@ -1,0 +1,343 @@
+{
+  "_metadata": {
+    "generated": "2026-04-11T20:10:00Z",
+    "purpose": "Canonical mapping of identity, governance, and runtime for every agent",
+    "authority_model": {
+      "layer_a_identity": "SOUL.md - defines who the agent is (personality, goals, style)",
+      "layer_b_governance": "levels-os/governance YAML + ns_stub.py - defines what agent can do (permissions, tool access)",
+      "layer_b_scope": "ONLY enforced on Claude Code agents via .claude/hooks/ns-pre-tool.sh. Telegram bots are NOT governed by this layer.",
+      "layer_c_runtime": "PM2 processes - actual running instances",
+      "precedence": "Governance constrains execution, never overrides identity. global.yaml is default fallback."
+    }
+  },
+  "agents": {
+    "aram": {
+      "dept": "dept-aram",
+      "soul": "/root/dept-aram/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/aram.yaml",
+      "governance_role": "legal",
+      "manifest": "/root/levels-os/governance/manifests/aram.manifest.yaml",
+      "claude_code_agent": true,
+      "pm2_processes": [
+        "aram-bot",
+        "aram-instagram"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "REVIEW (was Ollama fallback, now Claude-direct)"
+      },
+      "status": "COMPLETE",
+      "notes": "Dual platform (Telegram + Instagram). Governance blocks ExternalAPI per YAML policy (confirmed in logs)."
+    },
+    "corona": {
+      "dept": "dept-corona",
+      "soul": "/root/dept-corona/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/corona.yaml",
+      "governance_role": "realtor",
+      "manifest": "/root/levels-os/governance/manifests/corona.manifest.yaml",
+      "claude_code_agent": false,
+      "pm2_processes": [
+        "corona-bot"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "DELETE (not referenced in code)"
+      },
+      "status": "COMPLETE",
+      "notes": "Cross-dept dependency: requires harout-property-lookup.js"
+    },
+    "george": {
+      "dept": "dept-george",
+      "soul": "/root/dept-george/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/george.yaml",
+      "governance_role": "financial",
+      "manifest": "/root/levels-os/governance/manifests/george.manifest.yaml",
+      "claude_code_agent": false,
+      "pm2_processes": [
+        "george-bot"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "DELETE (not referenced in code)"
+      },
+      "status": "COMPLETE",
+      "notes": "FIXED: Governance policy and manifest created 2026-04-11."
+    },
+    "harout": {
+      "dept": "dept-harout",
+      "soul": "/root/dept-harout/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/harout.yaml",
+      "governance_role": "realtor",
+      "manifest": "/root/levels-os/governance/manifests/harout.manifest.yaml",
+      "claude_code_agent": false,
+      "pm2_processes": [
+        "harout-telegram",
+        "harout-instagram"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "REVIEW (was Ollama fallback)"
+      },
+      "status": "COMPLETE",
+      "notes": "Dual platform. Shares realtor role with Corona."
+    },
+    "harry": {
+      "dept": "dept-harry",
+      "soul": "/root/dept-harry/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/harry.yaml",
+      "governance_role": "bookkeeper",
+      "manifest": "/root/levels-os/governance/manifests/harry.manifest.yaml",
+      "claude_code_agent": true,
+      "pm2_processes": [
+        "harry-bot"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "REVIEW (was Ollama fallback)"
+      },
+      "status": "COMPLETE",
+      "notes": "Both Claude Code agent and Telegram bot. Governance only applies to Claude Code usage."
+    },
+    "hovo": {
+      "dept": "dept-hovo",
+      "soul": "/root/dept-hovo/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/hovo.yaml",
+      "governance_role": "teacher",
+      "manifest": "/root/levels-os/governance/manifests/hovo.manifest.yaml",
+      "claude_code_agent": false,
+      "pm2_processes": [
+        "hovo-bot"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "DELETE (not referenced in code)"
+      },
+      "status": "COMPLETE",
+      "notes": "FIXED: Governance policy and manifest created 2026-04-11. Shares teacher role with Roman."
+    },
+    "kris": {
+      "dept": "dept-kris",
+      "soul": "/root/dept-kris/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/kris.yaml",
+      "governance_role": "credit",
+      "manifest": "/root/levels-os/governance/manifests/kris.manifest.yaml",
+      "claude_code_agent": true,
+      "pm2_processes": [
+        "kris-worker"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "UNCERTAIN (loading path unclear)"
+      },
+      "status": "REVIEW_NEEDED",
+      "notes": "SOUL loading path uncertain per Agent 2 audit. Kris is 3CScanner, not a typical bot."
+    },
+    "lady": {
+      "dept": "dept-lady",
+      "soul": "/root/dept-lady/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/lady.yaml",
+      "governance_role": "ops",
+      "manifest": "/root/levels-os/governance/manifests/lady.manifest.yaml",
+      "claude_code_agent": false,
+      "pm2_processes": [],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "DELETE"
+      },
+      "status": "DISABLED",
+      "notes": "DISABLED since Mar 8. Has full governance but no runtime. Decision needed: archive or revive."
+    },
+    "lily": {
+      "dept": "dept-lily",
+      "soul": "/root/dept-lily/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/lily.yaml",
+      "governance_role": "coach",
+      "manifest": "/root/levels-os/governance/manifests/lily.manifest.yaml",
+      "claude_code_agent": false,
+      "pm2_processes": [
+        "lily-telegram",
+        "lily-facebook",
+        "lily-instagram",
+        "lily-web"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "REVIEW (was Ollama fallback across 3 platforms)"
+      },
+      "status": "COMPLETE",
+      "notes": "Most platforms of any agent (4). First live voice agent. Shares coach role with Nick."
+    },
+    "lou": {
+      "soul": "/root/dept-lou/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/lou.yaml",
+      "governance_role": "grants",
+      "manifest": "/root/levels-os/governance/manifests/lou.manifest.yaml",
+      "claude_code_agent": true,
+      "pm2_processes": [
+        "lou-grant-bot"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "UNCERTAIN"
+      },
+      "status": "COMPLETE",
+      "notes": "FIXED: Identity files copied from dept-uncle-lou to dept-lou. dept-uncle-lou preserved as backup.",
+      "dept": "dept-lou"
+    },
+    "nick": {
+      "dept": "dept-nick",
+      "soul": "/root/dept-nick/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/nick.yaml",
+      "governance_role": "coach",
+      "manifest": "/root/levels-os/governance/manifests/nick.manifest.yaml",
+      "claude_code_agent": false,
+      "pm2_processes": [
+        "nick-trainer"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "DELETE (not referenced in code)"
+      },
+      "status": "COMPLETE",
+      "notes": "Shares coach role with Lily."
+    },
+    "roman": {
+      "dept": "dept-roman",
+      "soul": "/root/dept-roman/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/roman.yaml",
+      "governance_role": "teacher",
+      "manifest": "/root/levels-os/governance/manifests/roman.manifest.yaml",
+      "claude_code_agent": true,
+      "pm2_processes": [],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "DELETE (not loaded by any process)"
+      },
+      "status": "AGENT_ONLY",
+      "notes": "No active Telegram bot. Used as Claude Code agent name for dispatched tasks. SOUL not loaded at runtime."
+    },
+    "soriano": {
+      "dept": "dept-soriano",
+      "soul": "/root/dept-soriano/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/soriano.yaml",
+      "governance_role": "youth",
+      "manifest": "/root/levels-os/governance/manifests/soriano.manifest.yaml",
+      "claude_code_agent": false,
+      "pm2_processes": [
+        "soriano-bot"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "DELETE (not referenced in code)"
+      },
+      "status": "COMPLETE",
+      "notes": "Youth empowerment. Arthur Soriano persona."
+    },
+    "spartak": {
+      "dept": "dept-spartak",
+      "soul": "/root/dept-spartak/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/spartak.yaml",
+      "governance_role": "translator",
+      "manifest": "/root/levels-os/governance/manifests/spartak.manifest.yaml",
+      "claude_code_agent": false,
+      "pm2_processes": [
+        "spartak-bot"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "REVIEW (was Ollama fallback)"
+      },
+      "status": "COMPLETE",
+      "notes": null
+    },
+    "tamara": {
+      "dept": "dept-tamara",
+      "soul": "/root/dept-tamara/SOUL.md",
+      "governance_policy": "/root/levels-os/governance/policies/agents/tamara.yaml",
+      "governance_role": "ops",
+      "manifest": "/root/levels-os/governance/manifests/tamara.manifest.yaml",
+      "claude_code_agent": true,
+      "pm2_processes": [
+        "tamara-bot",
+        "tamara-dispatcher"
+      ],
+      "soul_variants": {
+        "thick": "DELETE",
+        "thin": "UNCERTAIN (tamara-v6.js is PROTECTED)"
+      },
+      "status": "REVIEW_NEEDED",
+      "notes": "SOUL loading uncertain (tamara-v6.js is UNTOUCHABLE, not inspected). Shares ops role with Lady. SOURCE OF TRUTH for operational state."
+    },
+    "auditor": {
+      "dept": null,
+      "soul": null,
+      "governance_policy": null,
+      "governance_role": null,
+      "manifest": null,
+      "claude_code_agent": true,
+      "pm2_processes": [],
+      "status": "CLAUDE_CODE_ONLY",
+      "notes": "Claude Code agent only. No department, no SOUL, no governance policy. Used for audit tasks. Governed by global.yaml defaults via hooks."
+    },
+    "dispatcher": {
+      "dept": null,
+      "soul": null,
+      "governance_policy": null,
+      "governance_role": null,
+      "manifest": null,
+      "claude_code_agent": true,
+      "pm2_processes": [],
+      "status": "CLAUDE_CODE_ONLY",
+      "notes": "Claude Code agent only. No department, no SOUL, no governance policy. Used for dispatch tasks. Governed by global.yaml defaults via hooks."
+    },
+    "inbox": {
+      "dept": null,
+      "soul": null,
+      "governance_policy": null,
+      "governance_role": null,
+      "manifest": null,
+      "claude_code_agent": true,
+      "pm2_processes": [],
+      "status": "CLAUDE_CODE_ONLY",
+      "notes": "Claude Code agent only. No department, no SOUL, no governance policy. Used for inbox triage. Governed by global.yaml defaults via hooks."
+    }
+  },
+  "summary": {
+    "total_agents": 18,
+    "complete": [
+      "aram",
+      "corona",
+      "george",
+      "harout",
+      "harry",
+      "hovo",
+      "lily",
+      "lou",
+      "nick",
+      "soriano",
+      "spartak"
+    ],
+    "missing_governance": [],
+    "naming_mismatch": [],
+    "review_needed": [
+      "kris",
+      "tamara"
+    ],
+    "disabled": [
+      "lady"
+    ],
+    "agent_only_no_bot": [
+      "roman"
+    ],
+    "claude_code_only": [
+      "auditor",
+      "dispatcher",
+      "inbox"
+    ],
+    "governance_enforcement_scope": "Claude Code hooks ONLY. Telegram bots are NOT governed by ns_stub.py.",
+    "soul_thick_delete_candidates": 14,
+    "soul_thin_review_candidates": 5,
+    "soul_thin_delete_candidates": 7
+  },
+  "critical_finding": "Governance enforcement (ns_stub.py via hooks) only applies to Claude Code agents (9 agents). The 15+ PM2 Telegram bot processes operate outside governance enforcement entirely. The YAML policies define permissions but are never checked by bot runtime code. This means governance is an agent-layer control, not a system-wide control."
+}
