@@ -129,8 +129,8 @@
         "thick": "DELETE",
         "thin": "UNCERTAIN (loading path unclear)"
       },
-      "status": "REVIEW_NEEDED",
-      "notes": "SOUL loading path uncertain per Agent 2 audit. Kris is 3CScanner, not a typical bot."
+      "status": "COMPLETE",
+      "notes": "Reviewed 2026-04-13. SOUL exists, policy resolves by filename (kris.yaml), manifest consistent. Role-suffixed agent_id inside YAML is intentional pattern. kris-worker online."
     },
     "lady": {
       "dept": "dept-lady",
@@ -265,8 +265,8 @@
         "thick": "DELETE",
         "thin": "UNCERTAIN (tamara-v6.js is PROTECTED)"
       },
-      "status": "REVIEW_NEEDED",
-      "notes": "SOUL loading uncertain (tamara-v6.js is UNTOUCHABLE, not inspected). Shares ops role with Lady. SOURCE OF TRUTH for operational state."
+      "status": "COMPLETE",
+      "notes": "Reviewed 2026-04-13. SOUL exists, policy resolves by filename (tamara.yaml), manifest consistent. Role-suffixed agent_id inside YAML is intentional pattern. tamara-bot and tamara-dispatcher online. tamara-v6.js is UNTOUCHABLE, verified by observation."
     },
     "auditor": {
       "dept": null,
